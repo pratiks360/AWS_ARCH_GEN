@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">🏗️ AWS_ARCH_GEN</h1>
+  <h1 align="center">🏗️ AWS Managed Databae Architecture Generator </h1>
   <p align="center">
     <strong>AI-powered AWS architecture diagram generator — describe a use case, get a production-ready diagram.</strong>
   </p>
