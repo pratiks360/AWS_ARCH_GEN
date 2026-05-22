@@ -1,0 +1,11 @@
+Amazon RDS – Relational database service supporting MySQL, PostgreSQL, MariaDB, Oracle, and SQL Server. Handles patching, backups, and replication automatically.
+Amazon Aurora – AWS-built relational DB compatible with MySQL and PostgreSQL. Up to 5x faster than standard MySQL with multi-AZ replication built-in.
+Amazon DynamoDB – Fully managed NoSQL key-value and document database. Delivers single-digit millisecond performance at any scale.
+Amazon ElastiCache – In-memory caching service supporting Redis and Memcached. Used for session storage, leaderboards, and real-time analytics.
+Amazon Redshift – Fully managed data warehouse optimized for OLAP and analytics. Can query exabytes of data in S3 via Redshift Spectrum.
+Amazon Neptune – Managed graph database supporting Gremlin and SPARQL. Ideal for knowledge graphs, fraud detection, and social networks.
+Amazon Keyspaces – Serverless Cassandra-compatible managed database. Scales automatically without managing clusters.
+Amazon DocumentDB – MongoDB-compatible managed document database. Decouples compute and storage for independent scaling.
+Amazon Timestream – Serverless time-series database for IoT and operational data. Automatically tiers data between memory and magnetic storage.
+Amazon QLDB – Quantum Ledger Database with an immutable, cryptographically verifiable transaction log. Ideal for audit trails and financial records.
+Amazon MemoryDB for Redis – Redis-compatible, durable in-memory database with multi-AZ persistence. Combines ultra-fast performance with data durability.
