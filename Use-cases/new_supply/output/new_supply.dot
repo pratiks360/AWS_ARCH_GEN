@@ -1,0 +1,223 @@
+digraph "Data Motion Implementation Package — Real-Time Inventory" {
+	graph [bb="0,0,582.5,1344.2",
+		bgcolor=white,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=14,
+		label="Data Motion Implementation Package — Real-Time Inventory",
+		lheight=0.24,
+		lp="291.25,12.625",
+		lwidth=5.23,
+		nodesep=0.8,
+		pad=0.5,
+		rankdir=TB,
+		ranksep=1.2,
+		splines=ortho
+	];
+	node [fixedsize=true,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		height=1.4,
+		imagescale=true,
+		label="\N",
+		labelloc=b,
+		shape=box,
+		style=rounded,
+		width=1.4
+	];
+	edge [color="#7B8894"];
+	subgraph "cluster_External Warehouse Data Sources" {
+		graph [bb="31,1116.9,479,1336.2",
+			bgcolor="#ECEFF1",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="External Warehouse Data Sources",
+			labeljust=l,
+			lheight=0.22,
+			lp="127.88,1324.4",
+			lwidth=2.47,
+			margin=15,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=dashed
+		];
+		"0bd3b16360044e9883d9fe386ae9afa4"	[height=2.3,
+			image="D:\Projects\AWS_managedDB\.venv\Lib\site-packages\resources/generic/blank\blank.png",
+			label="Fulfillment Center Nodes
+(RFID scanners)",
+			pos="96,1214.7",
+			shape=none];
+		"3ada24194fba4c6090daef09dab4a352"	[height=2.3,
+			image="D:\Projects\AWS_managedDB\.venv\Lib\site-packages\resources/generic/blank\blank.png",
+			label="Logistics Fleet Telematics
+(GPS / milestones)",
+			pos="255,1214.7",
+			shape=none];
+		"66c3cbf068e7474c9827f49441b563fc"	[height=2.3,
+			image="D:\Projects\AWS_managedDB\.venv\Lib\site-packages\resources/generic/blank\blank.png",
+			label="Supply Chain ERP Systems
+(inbound POs, manifests)",
+			pos="414,1214.7",
+			shape=none];
+	}
+	subgraph "cluster_Ingestion Tier" {
+		graph [bb="189,845.05,478,1064.4",
+			bgcolor="#FFF8E1",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="Ingestion Tier",
+			labeljust=l,
+			lheight=0.22,
+			lp="233.75,1052.5",
+			lwidth=1.02,
+			margin=15,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"96f25e16087844dd93a835cbc7584922"	[height=2.3,
+			image="D:\Projects\AWS_managedDB\.venv\Lib\site-packages\resources/aws/analytics\managed-streaming-for-kafka.png",
+			label="msk-inventory-events
+(Amazon MSK)",
+			pos="254,942.85",
+			shape=none];
+		"5518267a297443bba7f3f658a75cc5bc"	[height=2.3,
+			image="D:\Projects\AWS_managedDB\.venv\Lib\site-packages\resources/aws/database\elasticache.png",
+			label="elasticache-fast-state
+(Amazon ElastiCache)",
+			pos="413,942.85",
+			shape=none];
+	}
+	subgraph "cluster_Continuous Processing Core" {
+		graph [bb="197,573.2,362,792.55",
+			bgcolor="#E3F2FD",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="Continuous Processing Core",
+			labeljust=l,
+			lheight=0.22,
+			lp="279.25,780.67",
+			lwidth=2.06,
+			margin=15,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		dd5d975b5dd94c5ea2c965b5a4e15f3d	[height=2.3,
+			image="D:\Projects\AWS_managedDB\.venv\Lib\site-packages\resources/aws/compute\lambda.png",
+			label="flink-metric-processor
+(Processing: Amazon Flink)",
+			pos="279,671",
+			shape=none];
+	}
+	subgraph "cluster_Persistence & Analytics" {
+		graph [bb="104,33.25,562,520.7",
+			bgcolor="#F3E5F5",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="Persistence & Analytics",
+			labeljust=l,
+			lheight=0.22,
+			lp="172.38,508.83",
+			lwidth=1.68,
+			margin=15,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"542a62460b564860bcf45a5d9f533a2e"	[height=2.3,
+			image="D:\Projects\AWS_managedDB\.venv\Lib\site-packages\resources/aws/database\dynamodb.png",
+			label="ddb-hot-inventory
+(Amazon DynamoDB)",
+			pos="173,399.15",
+			shape=none];
+		e71e915e15a24c95ae3e0408ce911d4e	[height=2.3,
+			image="D:\Projects\AWS_managedDB\.venv\Lib\site-packages\resources/aws/analytics\redshift.png",
+			label="redshift-historical-warehouse
+(Amazon Redshift)",
+			pos="263,131.05",
+			shape=none];
+		"542a62460b564860bcf45a5d9f533a2e" -> e71e915e15a24c95ae3e0408ce911d4e	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label="cold-tier replication",
+			lp="231.75,265.1",
+			pos="e,218,213.4 218,316.52 218,316.52 218,224.92 218,224.92"];
+		"048c228e70ef430f89b47ef1ec92845f"	[height=2.3,
+			image="D:\Projects\AWS_managedDB\.venv\Lib\site-packages\resources/aws/database\aurora.png",
+			label="aurora-transaction-log
+(Amazon Aurora)",
+			pos="386,399.15",
+			shape=none];
+		"048c228e70ef430f89b47ef1ec92845f" -> e71e915e15a24c95ae3e0408ce911d4e	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label="ETL / CDC -> historical warehouse",
+			lp="448.62,265.1",
+			pos="e,271,213.71 335.89,371.25 304.9,371.25 271,371.25 271,371.25 271,371.25 271,225.23 271,225.23"];
+	}
+	"0bd3b16360044e9883d9fe386ae9afa4" -> "96f25e16087844dd93a835cbc7584922"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="event streams",
+		lp="143.88,1080.6",
+		pos="e,203.67,943.25 134.5,1132.2 134.5,1052.3 134.5,943.25 134.5,943.25 134.5,943.25 192.15,943.25 192.15,943.25"];
+	"3ada24194fba4c6090daef09dab4a352" -> "96f25e16087844dd93a835cbc7584922"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="telemetry events",
+		lp="302.38,1080.6",
+		pos="e,237.87,1025.6 237.87,1132 237.87,1132 237.87,1037.1 237.87,1037.1"];
+	"66c3cbf068e7474c9827f49441b563fc" -> "96f25e16087844dd93a835cbc7584922"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="transaction events",
+		lp="466.88,1080.6",
+		pos="e,271.13,1025.3 413.5,1132 413.5,1103.8 413.5,1079.2 413.5,1079.2 413.5,1079.2 271.13,1079.2 271.13,1079.2 271.13,1079.2 271.13,\
+1036.9 271.13,1036.9"];
+	"96f25e16087844dd93a835cbc7584922" -> dd5d975b5dd94c5ea2c965b5a4e15f3d	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="raw telemetry & update event stream",
+		lp="108,808.8",
+		pos="e,253.87,753.75 253.87,860.18 253.87,860.18 253.87,765.26 253.87,765.26"];
+	"96f25e16087844dd93a835cbc7584922" -> dd5d975b5dd94c5ea2c965b5a4e15f3d	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="metrics feed",
+		lp="314.25,808.8",
+		pos="e,279.13,753.75 279.13,860.18 279.13,860.18 279.13,765.26 279.13,765.26"];
+	dd5d975b5dd94c5ea2c965b5a4e15f3d -> "5518267a297443bba7f3f658a75cc5bc"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="cache updates (microsecond)",
+		lp="497.75,808.8",
+		pos="e,362.68,943.25 317.4,753.79 317.4,833.89 317.4,943.25 317.4,943.25 317.4,943.25 351.17,943.25 351.17,943.25"];
+	dd5d975b5dd94c5ea2c965b5a4e15f3d -> "542a62460b564860bcf45a5d9f533a2e"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="low-latency active stock updates",
+		lp="247.38,536.95",
+		pos="e,213.5,481.9 228.69,671.25 219.9,671.25 213.5,671.25 213.5,671.25 213.5,671.25 213.5,493.41 213.5,493.41"];
+	dd5d975b5dd94c5ea2c965b5a4e15f3d -> "048c228e70ef430f89b47ef1ec92845f"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="durable transaction logs",
+		lp="473,536.95",
+		pos="e,335.74,427.25 321.4,588.48 321.4,517.76 321.4,427.25 321.4,427.25 321.4,427.25 324.22,427.25 324.22,427.25"];
+}

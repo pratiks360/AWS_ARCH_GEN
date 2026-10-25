@@ -13,11 +13,10 @@ graphviz==0.20.3
 
 # GraphViz Python bindings (C extension)
 # Note: Installation requires MSVC compiler and GraphViz dev files
-# Install with: pip install --config-settings="--global-option=build_ext" 
-#               --config-settings="--global-option=-IC:\Program Files\Graphviz\include" 
+# Install with: pip install --config-settings="--global-option=build_ext" \
+#               --config-settings="--global-option=-IC:\Program Files\Graphviz\include" \
 #               --config-settings="--global-option=-LC:\Program Files\Graphviz\lib" pygraphviz
-#pygraphviz==1.14
-pygraphviz
+pygraphviz==1.14
 # Convert GraphViz DOT files to Draw.io format
 graphviz2drawio==1.1.0
 
